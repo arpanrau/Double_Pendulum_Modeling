@@ -1,4 +1,4 @@
-function animationscript(L1,L2,T,Y)
+function animationscript(L1,L2,T,Y,M1,M2)
 
 %Animates ode45 double pendulum implementation
 %Accepts Length of first leg, length of 2nd leg,
@@ -15,8 +15,10 @@ for i = 1:length(T)
     clf;
     axis([-(L1 + L2), L1+L2, -(L1+L2),L1+L2])
     hold on;
-    plot(x1(i), y1(i), 'r.', 'MarkerSize', 50);
-    plot(x2(i), y2(i), 'b.', 'MarkerSize', 20);
+    plot(x1(i), y1(i), 'r.', 'MarkerSize', M1*10);
+    plot(x2(i), y2(i), 'b.', 'MarkerSize', M2*10);
+    plot([0 x1(i)], [0 y1(i)], 'r');
+    plot([x1(i) x2(i)], [y1(i) y2(i)], 'b');
     drawnow
 end
 end

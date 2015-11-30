@@ -20,6 +20,6 @@ initial = [0.52;0.52;0;0];
         theta2A = (2*sin(theta1-theta2)*((theta1V^2)*L1*(M1+M2)+g*(M1+M2)*cos(theta1)+(theta2V^2)*L2*M2*cos(theta1-theta2)))/(L2*(2*M1+M2-M2*cos(2*theta1-2*theta2)));
         res = [theta1V; theta2V; theta1A; theta2A];
     end
-animationscript(L1,L2,T,U)
+animationscript(L1,L2,T,U,M1,M2)
 end
 
