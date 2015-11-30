@@ -11,12 +11,12 @@ x2 = L1*sin(Y(:,1))+L2*sin(Y(:,2));
 y1 = -L1*cos(Y(:,1));
 y2 = -L1*cos(Y(:,1))-L2*cos(Y(:,2));
 
-for i = length(T)
+for i = 1:length(T)
     clf;
     axis([-(L1 + L2), L1+L2, -(L1+L2),L1+L2])
     hold on;
-    plot(x1, y1, 'r.', 'MarkerSize', 50);
-    plot(x2, y2, 'b.', 'MarkerSize', 20);
+    plot(x1(i), y1(i), 'r.', 'MarkerSize', 50);
+    plot(x2(i), y2(i), 'b.', 'MarkerSize', 20);
     drawnow
 end
 end
