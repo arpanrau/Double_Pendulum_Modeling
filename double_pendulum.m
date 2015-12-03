@@ -1,20 +1,20 @@
 function  double_pendulum()
 
-L1 = 10;
-L2 = 10;
+L1 = 1;
+L2 = 1;
 M1 = 5;
 M2 = 10;
 g = 9.8;
 
 end_time = 50;
 step = 0.1;
-initial = [pi pi 0 0];
+initial = [pi/2 pi/2 0 0];
 
 
-[T,U] = ode45(@netFlow,0:step:end_time,initial);
+[T,U] = ode23tb(@netFlow,0:step:end_time,initial);
 
 KE1 = (.5*M1*(L1^2).*(U(:,3).^2));
-KE2 = (.5*M2*((L1^2).*(U(:,3).^2)*(L2^2).*(U(:,4).^2)+(2.*U(:,3).*U(:,4).*L1*L2.*cos(U(:,1)-U(:,2)))));
+KE2 = (.5*M2*((L1^2).*(U(:,3).^2)+(L2^2).*(U(:,4).^2)+(2.*U(:,3).*U(:,4).*L1*L2.*cos(U(:,1)-U(:,2)))));
 PE1 = -M1*g*L1.*cos(U(:,1));
 PE2 = M2*g*(-L1.*cos(U(:,1))-L2.*cos(U(:,2)));
         
@@ -29,15 +29,22 @@ PE2 = M2*g*(-L1.*cos(U(:,1))-L2.*cos(U(:,2)));
     end
 
 
+figure
 
-% hold on
-% plot(KE1,'r-.','LineWidth',2);
-% plot(KE2,'b-.','LineWidth',2);
-% plot(PE1,'r','LineWidth',2);
-% plot(PE2,'b','LineWidth',2);
-plot(KE1+KE2+PE1+PE2,'k','LineWidth',2)
+animationscript(L1,L2,T,U,M1,M2,step)
 
-animationscript(L1,L2,T,U,step)
+figure
+title('Energy Vs Time - Double Pendulum')
+hold on
+plot(T,KE1,'r-.');
+plot(T,KE2,'b-.');
+plot(T,PE1,'r');
+plot(T,PE2,'b');
+plot(T,KE1+KE2+PE1+PE2,'k') 
+xlabel('Time(Seconds)')
+ylabel('Energy(Joules)')
+legend('KE1','KE2','PE1','PE2','E')
+
 
 end
 

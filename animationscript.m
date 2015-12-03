@@ -17,8 +17,8 @@ for i = 1:length(T)
     axis([-(L1 + L2), L1+L2, -(L1+L2),L1+L2])
     axis square
     hold on;
-    plot(x1(i), y1(i), 'r.', 'MarkerSize', M1*10);
-    plot(x2(i), y2(i), 'b.', 'MarkerSize', M2*10);
+    plot(x1(i), y1(i), 'r.', 'MarkerSize', M1*2);
+    plot(x2(i), y2(i), 'b.', 'MarkerSize', M2*2);
     plot([0 x1(i)], [0 y1(i)], 'r');
     plot([x1(i) x2(i)], [y1(i) y2(i)], 'b');
     drawnow
