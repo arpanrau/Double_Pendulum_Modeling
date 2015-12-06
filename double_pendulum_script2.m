@@ -1,12 +1,12 @@
-function  double_pendulum()
+function  double_pendulum_script2()
 
 L1 = 1;
 L2 = 1;
 M1 = 5;
-M2 = 10;
+M2 = 5;
 g = 9.8;
 
-end_time = 30;
+end_time = 5;
 step = 0.1;
 initial = [pi/2 pi/2 0 0];
 
@@ -38,13 +38,15 @@ y1 = -L1*cos(Y(:,1));
 y2 = -L1*cos(Y(:,1))-L2*cos(Y(:,2));
 
 %animationscript(L1,L2,T,U,M1,M2,step)
-
+title('Position Trace over five seconds - Double Pendulum. L1 = 1 M. L2 = 2M. M1 = 5 KG. M2 = 5 KG.')
 hold on;
-    plot(x1, y1, 'r.', 'MarkerSize', M1*2);
-    plot(x2, y2, 'b.', 'MarkerSize', M2*2);
+    plot(x1, y1, 'r', 'MarkerSize', M1*2);
+    plot(x2, y2, 'b', 'MarkerSize', M2*2);
     plot([0 x1], [0 y1], 'r');
     plot([x1 x2], [y1 y2], 'b');
-
+    xlabel('X position (m)')
+    ylabel('Y position (m)')
+legend('M1','M2')
 figure
 title('Energy Vs Time - Double Pendulum')
 hold on

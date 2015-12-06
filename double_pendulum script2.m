@@ -1,4 +1,4 @@
-function  double_pendulum()
+function  double_pendulum script2()
 
 L1 = 1;
 L2 = 1;
