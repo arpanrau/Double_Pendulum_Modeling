@@ -6,9 +6,10 @@ M1 = 5;
 M2 = 10;
 g = 9.8;
 
-end_time = 50;
+end_time = 30;
 step = 0.1;
 initial = [pi/2 pi/2 0 0];
+
 
 
 [T,U] = ode23tb(@netFlow,0:step:end_time,initial);
@@ -29,9 +30,9 @@ PE2 = M2*g*(-L1.*cos(U(:,1))-L2.*cos(U(:,2)));
     end
 
 
-figure
+%figure
 
-animationscript(L1,L2,T,U,M1,M2,step)
+%animationscript(L1,L2,T,U,M1,M2,step)
 
 figure
 title('Energy Vs Time - Double Pendulum')
